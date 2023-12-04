@@ -7,13 +7,13 @@
   <div class="col-md-4 offset-md-4">
     <form action="">
       <div class="input-group mb-3">
-        <input type="text" name="q" id="q" value="{{ request.args.q }}" placeholder="Find post" class="form-control">
+        <input type="text" name="q" id="q" value="{{ request.args.q }}" placeholder="Encuentra un post" class="form-control">
         <button class="btn btn-primary"><i class="bi bi-search"></i></button>
       </div>
     </form>
   </div>
   {% if posts|length == 0 %}
-  <div class="text-center fs-4">No posts</div>
+  <div class="text-center fs-4">No hay publicaciones</div>
   {% else %}
   <div class="col-md-8 offset-md-2">
     {% for post in posts %}
@@ -33,18 +33,18 @@
           {% endif  %}
 
           {% if not post.publish %}
-          <div class=" badge border border-danger border-2 text-danger"><i class="bi bi-pen"></i>draft</div>
+          <div class=" badge border border-danger border-2 text-danger"><i class="bi bi-pen"></i>Borrador</div>
           {% endif %}
             
           {% if post.publish and (post.publish > date) %}
             <div class="badge border border-dark border-2 text-dark">
-             <i class="bi bi-clock"></i> scheduled
+             <i class="bi bi-clock"></i> Agendado
             </div>
           {% endif %}
           </div>
           <p>{{post.body|markdown|striptags|truncate}}</p>
           <div class="mb-3">
-            <a href="{{ post_url }}" class="btn btn-primary">Read more <i class="bi bi-arrow-right"></i></a>
+            <a href="{{ post_url }}" class="btn btn-primary">Leer mas <i class="bi bi-arrow-right"></i></a>
           </div>
         </article>
       </div>
